@@ -1,0 +1,27 @@
+---
+import EarthCanvas from "./canvas/Earth.vue";
+import { styles } from "../assets/scripts/styles.js";
+---
+
+<section class="relative w-full h-screen mx-auto">
+    <div class="xl: flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
+        <div class={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-center gap-5`}>
+            <div class="flex flex-col justify-center items-center mt-5">
+                <div class="w-5 h-5 rounded-full bg-[#8d6eff]"></div>
+                <div class="w-1 sm:h-80 h-40 violet-full"></div>
+                <div class="w-5 h-5 rounded-full bg-[#8d6eff]"></div>
+            </div>
+
+            <div>
+                <h1 class={`text-white ${styles.heroHeadText}`}>
+                  Hi, I'm <span class="text-[#8d6eff]">Bergan</span>
+                </h1>
+                <p class={`mt-2 text-white-100 ${styles.heroSubText}`}>
+                  I'm a Software Developer creating<br class="sm:block hidden" />
+                  user interfaces and web applications
+                </p>
+            </div>
+            <EarthCanvas client:load />
+        </div>
+    </div>
+</section>

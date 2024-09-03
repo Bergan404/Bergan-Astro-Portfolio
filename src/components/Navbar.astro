@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+
+import { navLinks } from "../constants/index.js";
+import { logo, menu, close } from "../../public/assets/index.js";
+---
+
+<nav class="w-full flex items-center py-5 fixed top-0 z-20">
+    <div class="w-full flex justify-between items-center max-w-7xl mx-auto">
+        <a href="/" class="flex items-center gap-2">
+            <Image src={logo} alt="logo" class="w-9 h-9 object-contain" />
+            <p class="text-white text-[18px] font-bold cursor-pointer flex">
+                Bergan &nbsp;
+                <span class="sm:block hidden"> | Software Developer</span>
+            </p>
+        </a>
+
+        <ul class="list-none hidden sm:flex flex-row gap-10">
+            {
+                navLinks.map((nav) => (
+                    <li
+                        class={`text-secondary hover:text-white text-[18px] font-medium cursor-pointer`}
+                    >
+                        <a href={`#${nav.id}`}>{nav.title}</a>
+                    </li>
+                ))
+            }
+        </ul>
+
+        <div class="sm:hidden flex flex-1 justify-end items-center">
+            <Image
+                src={menu}
+                alt="menu"
+                class="w-[28px] h-[28px] object-contain cursor-pointer"
+                id="menu-icon"
+            />
+
+            <div
+                id="mobile-menu"
+                class="hidden p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl"
+            >
+                <ul
+                    class="list-none flex justify-end items-start flex-1 flex-col gap-4"
+                >
+                    {
+                        navLinks.map((nav) => (
+                            <li class="font-poppins font-medium cursor-pointer text-[16px] text-secondary hover:text-white">
+                                <a href={`#${nav.id}`}>{nav.title}</a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuIcon.addEventListener("click", () => {
+        const isMenuOpen = mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden", !isMenuOpen);
+        menuIcon.src = isMenuOpen ? "{close}" : "{menu}";
+    });
+</script>
