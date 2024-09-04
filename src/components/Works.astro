@@ -1,0 +1,32 @@
+---
+import ProjectCards from "./ProjectCards.astro";
+
+import { styles } from "../assets/scripts/styles.js";
+import { github } from "../../public/assets/index.js";
+import { projects } from "../constants/index.js";
+---
+
+<section class={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div>
+        <p class={`${styles.sectionSubText} `}>My work</p>
+        <h2 class={`${styles.sectionHeadText}`}>Projects.</h2>
+    </div>
+
+    <div class="w-full flex">
+        <p class="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+            Following projects showcases my skills and experience through
+            real-world examples of my work. Each project is briefly described
+            with links to code repositories and live demos in it. It reflects my
+            ability to solve complex problems, work with different technologies,
+            and manage projects effectively.
+        </p>
+    </div>
+
+    <div class="mt-20 flex flex-wrap gap-7">
+        {
+            projects.map((project) => (
+                <ProjectCards title={project.name} image={project.image} github={project.source_code_link} description={project.description} />
+            ))
+        }
+    </div>
+</section>

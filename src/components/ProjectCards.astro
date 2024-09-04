@@ -1,0 +1,43 @@
+---
+import Image from "astro/components/Image.astro";
+
+interface Props {
+    title: string;
+    image: ImageMetadata;
+    github: string;
+    description: string;
+}
+
+const { title, image, github, description } = Astro.props;
+---
+
+<div class="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full">
+    <div class="relative w-full h-[230px]">
+        <Image
+            src={image}
+            alt="project_image"
+            class="w-full h-full object-cover rounded-2xl"
+        />
+
+        <div class="absolute inset-0 flex justify-end m-3 card-img_hover">
+            <div
+                class="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+            >
+                <img
+                    src={github}
+                    alt="source code"
+                    class="w-1/2 h-1/2 object-contain"
+                />
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h3 class="text-white font-bold text-[24px]">{title}</h3>
+        <p class="mt-2 text-secondary text-[14px]">{description}</p>
+    </div>
+
+    <div class="mt-4 flex flex-wrap gap-2">
+
+    </div>
+</div>
