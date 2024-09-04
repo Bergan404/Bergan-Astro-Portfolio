@@ -1,10 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  mode: "jit",
   theme: {
     extend: {
       colors: {
-        primary: "#050816",
+        primary: "#050816 !important",
         secondary: "#aaa6c3",
         tertiary: "#151030",
         "black-100": "#100d25",

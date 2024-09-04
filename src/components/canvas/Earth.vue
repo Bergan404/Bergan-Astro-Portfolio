@@ -4,8 +4,6 @@ import { Stars, OrbitControls, Levioso, MouseParallax } from '@tresjs/cientos';
 import { TresCanvas } from '@tresjs/core';
 import { useRenderLoop } from '@tresjs/core';
 import { BasicShadowMap, SRGBColorSpace, NoToneMapping } from 'three/src/constants.js';
-// import Box from "./box.vue";
-// import Error from './error.vue';
 import Planet from './Planet.vue'
 
 const gl = {
@@ -25,7 +23,7 @@ onLoop(({ delta, elapsed }) => {
     // I will run at every frame ~ 60FPS (depending of your monitor)
     if (boxRef.value) {
         boxRef.value.rotation.y += delta
-        boxRef.value.rotation.z = elapsed * 0.2
+        boxRef.value.rotation.z = elapsed * 2
     }
 
     if (groupRef.value) {

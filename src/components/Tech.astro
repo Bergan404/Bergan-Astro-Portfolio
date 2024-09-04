@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+
+import { technologies, frontEnd, backEnd } from "../constants/index.js";
+import { bluePlanet, logo, redPlanet } from "../../public/assets/index.js";
+---
+
+<div class="flex justify-between">
+    <div class="slidercircle">
+        <div class="circle-one">
+            <div class="circle-arround-one"></div>
+        </div>
+        <div
+            class="flex flex-row flex-wrap justify-center gap-10 circle-two"
+        >
+            {
+                frontEnd.map((frontend, index) => (
+                    <div
+                        class={`circle-arround-two-${index + 1} anima`}
+                    >
+                        <img
+                            class="circle-icon"
+                            src={frontend.url}
+                            alt="Frontend Languages"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+        <div class="circle-middle-blue">
+            <Image src={bluePlanet} alt="logo" />
+        </div>
+    </div>
+    <div class="slidercircle">
+        <div class="circle-one">
+            <div class="circle-arround-one"></div>
+        </div>
+        <div
+            class="flex flex-row flex-wrap justify-center gap-10 circle-two"
+        >
+            {
+                backEnd.map((backend, index) => (
+                    <div
+                        class={`circle-arround-two-${index + 1} anima`}
+                    >
+                        <img
+                            class="circle-icon"
+                            src={backend.url}
+                            alt="Backend Languages"
+                        />
+                    </div>
+                ))
+            }
+        </div>
+        <div class="circle-middle-red">
+            <Image src={redPlanet} alt="logo" />
+        </div>
+    </div>
+</div>
+
+<script>
+    const cssRules = [];
+
+    for (let i = 1; i <= 20; i++) {
+      const cssRule = `.circle-arround-two-${i} {
+        cursor: pointer;
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        top: 210px;
+        left: 210px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+      }`;
+
+      cssRules.push(cssRule);
+    }
+
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = cssRules.join('\n');
+    document.head.appendChild(styleElement);
+</script>
