@@ -1,14 +1,16 @@
 ---
 import Image from "astro/components/Image.astro";
+import { github } from "../../public/assets/index.js";
 
 interface Props {
     title: string;
     image: ImageMetadata;
-    github: string;
+    link: string;
     description: string;
+    tags: { name: string; icon: ImageMetadata; color: string }[];
 }
 
-const { title, image, github, description } = Astro.props;
+const { title, image, link, description, tags } = Astro.props;
 ---
 
 <div class="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full">
@@ -20,15 +22,16 @@ const { title, image, github, description } = Astro.props;
         />
 
         <div class="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <div
+            <a
+                href={link}
                 class="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
-                <img
+                <Image
                     src={github}
                     alt="source code"
                     class="w-1/2 h-1/2 object-contain"
                 />
-            </div>
+            </a>
         </div>
     </div>
 
@@ -38,6 +41,10 @@ const { title, image, github, description } = Astro.props;
     </div>
 
     <div class="mt-4 flex flex-wrap gap-2">
-
+        {
+            tags.map((tag) => (
+                <Image src={tag.icon} alt={tag.name} class="w-7" />
+            ))
+        }
     </div>
 </div>

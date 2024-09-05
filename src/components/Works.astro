@@ -2,7 +2,6 @@
 import ProjectCards from "./ProjectCards.astro";
 
 import { styles } from "../assets/scripts/styles.js";
-import { github } from "../../public/assets/index.js";
 import { projects } from "../constants/index.js";
 ---
 
@@ -25,7 +24,13 @@ import { projects } from "../constants/index.js";
     <div class="mt-20 flex flex-wrap gap-7">
         {
             projects.map((project) => (
-                <ProjectCards title={project.name} image={project.image} github={project.source_code_link} description={project.description} />
+            <ProjectCards
+                title={project.name}
+                image={project.image}
+                link={project.source_code_link}
+                description={project.description}
+                tags={project.tags}
+            />
             ))
         }
     </div>

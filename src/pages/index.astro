@@ -5,7 +5,8 @@ import Navbar from "../components/Navbar.astro";
 import About from "../components/About.astro";
 import Tech from "../components/Tech.astro";
 import Works from "../components/Works.astro";
-// import StarsCanvas from "../components/StarCanvas.astro";
+import Contact from "../components/Contact.astro";
+import StarCanvas from "../components/canvas/StarCanvas.vue";
 ---
 
 <Layout title="Bergan Oudshoorn">
@@ -14,22 +15,20 @@ import Works from "../components/Works.astro";
 			<Navbar />
 			<div class="relative z-0">
 				<Home />
-				<!-- <StarsCanvas /> -->
+				<StarCanvas client:load/>
 			</div>
 		</div>
 		<About />
 		<Works />
         <Tech />
-        <!--
 		<div class='relative z-0 bg-primary'>
 			<div class='bg-contact-pattern bg-cover bg-no-repeat bg-center'>
 				<div class='relative z-0'>
 				<Contact />
-				{/* <Laptop /> */}
-				<StarsCanvas />
+				<!-- <StarsCanvas /> -->
 				</div>
 			</div>
-		</div> -->
+		</div>
 	</div>
 </Layout>
 

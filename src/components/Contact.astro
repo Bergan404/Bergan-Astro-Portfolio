@@ -1,0 +1,47 @@
+---
+import { styles } from "../assets/scripts/styles.js";
+---
+
+<section class={`${styles.padding} max-w-7xl mx-auto relative z-0`}>
+    <div
+        class={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
+    >
+        <div class="flex-[0.75] bg-black-100 p-8 rounded-2xl h-fit">
+            <p class={styles.sectionSubText}>Get in touch</p>
+            <h3 class={styles.sectionHeadText}>Contact.</h3>
+
+            <form class="mt-12 flex flex-col gap-8">
+                <label class="flex flex-col">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="What's your good name?"
+                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                    />
+                </label>
+                <label class="flex flex-col">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="What's your web address?"
+                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                    />
+                </label>
+                <label class="flex flex-col">
+                    <textarea
+                        rows={7}
+                        name="message"
+                        placeholder="What you want to say?"
+                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                    ></textarea>
+                </label>
+
+                <button
+                    type="submit"
+                    class="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+                >
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
