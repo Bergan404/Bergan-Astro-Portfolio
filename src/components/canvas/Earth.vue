@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { TresCanvas } from '@tresjs/core';
-import { extend, useTresContext } from '@tresjs/core';
-import { type ShallowRef, shallowRef } from 'vue';
-import { Stars, OrbitControls, Levioso, MouseParallax } from '@tresjs/cientos';
-import { useRenderLoop } from '@tresjs/core';
-import { BasicShadowMap, SRGBColorSpace, NoToneMapping } from 'three/src/constants.js';
+import { extend } from '@tresjs/core';
+import { OrbitControls, Levioso } from '@tresjs/cientos';
 import Planet from './Planet.vue';
 
 extend({ OrbitControls })
 
 const controlsOptions = {
-  enableZoom: false,   // Disable zooming
-  enablePan: false,    // Disable panning (optional)
+  enableZoom: false,
+  enablePan: false,
 }
 
 </script>
