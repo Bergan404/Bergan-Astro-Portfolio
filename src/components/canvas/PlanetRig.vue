@@ -8,10 +8,11 @@ import { scrollProgress } from '../../composables/useScrollProgress';
 // x/y position the planet within the viewport, scale sizes it.
 const waypoints = [
   { x: 13, y: -1, scale: 13 }, // hero      — large, right
-  { x: -15, y: 3, scale: 9 }, // about     — left, smaller
+  { x: 17, y: 3, scale: 9 }, // about     — left, smaller
   { x: 15, y: -3, scale: 8 }, // works     — far right
-  { x: 0, y: 9, scale: 11 }, // tech      — drifts up, centred
-  { x: -12, y: -2, scale: 10 }, // contact   — settles left
+  { x: 0, y: 2, scale: 11 }, // tech      — drifts up, centred
+  // { x: -13, y: -10, scale: 8 }, // contact   — settles left
+  { x: 0, y: -20, scale: 25 }, // contact   — settles left
 ];
 
 const groupRef = shallowRef<any>(null);
