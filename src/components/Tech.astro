@@ -1,85 +1,32 @@
 ---
-import { Image } from "astro:assets";
-
-import { frontEnd, backEnd } from "../constants/index.js";
-import { bluePlanet, redPlanet } from "../../public/assets/index.js";
-
-import { styles } from "../assets/scripts/styles.js";
+import { technologies } from "../constants/index.js";
 ---
 
-<section class={`${styles.padding} mx-auto relative z-0`}>
-    <div class="flex justify-between">
-        <div class="slidercircle">
-            <div class="circle-one">
-                <div class="circle-arround-one"></div>
-            </div>
-            <div
-                class="flex flex-row flex-wrap justify-center gap-10 circle-two"
-            >
-                {
-                    frontEnd.map((frontend, index) => (
-                        <div class={`circle-arround-two-${index + 1} anima`}>
-                            <img
-                                class="circle-icon"
-                                src={frontend.url}
-                                alt="Frontend Languages"
-                            />
-                        </div>
-                    ))
-                }
-            </div>
-            <div class="circle-middle-blue">
-                <Image src={bluePlanet} alt="logo" />
-            </div>
-        </div>
-        <div class="slidercircle">
-            <div class="circle-one">
-                <div class="circle-arround-one"></div>
-            </div>
-            <div
-                class="flex flex-row flex-wrap justify-center gap-10 circle-two"
-            >
-                {
-                    backEnd.map((backend, index) => (
-                        <div class={`circle-arround-two-${index + 1} anima`}>
-                            <img
-                                class="circle-icon"
-                                src={backend.url}
-                                alt="Backend Languages"
-                            />
-                        </div>
-                    ))
-                }
-            </div>
-            <div class="circle-middle-red">
-                <Image src={redPlanet} alt="logo" />
-            </div>
-        </div>
+<section class="relative py-24 sm:py-32" id="tech">
+  <span class="hash-span"></span>
+  <div class="max-w-6xl mx-auto px-6 sm:px-10">
+    <div class="reveal max-w-3xl">
+      <p class="text-accent uppercase tracking-[0.25em] text-sm font-medium">What I use</p>
+      <h2 class="font-display font-bold text-white text-[34px] sm:text-[52px] mt-2">Tech stack.</h2>
+      <p class="mt-5 text-secondary text-[17px] leading-[30px]">
+        The languages, frameworks, and tools I reach for when building.
+      </p>
     </div>
+
+    <div class="mt-14 grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4 reveal">
+      {technologies.map((tech) => (
+        <div class="group glass rounded-xl p-5 flex flex-col items-center gap-3 transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50">
+          <img
+            src={tech.url}
+            alt={tech.name}
+            loading="lazy"
+            class="w-11 h-11 object-contain transition-transform duration-300 group-hover:scale-110"
+          />
+          <span class="text-secondary text-[13px] text-center group-hover:text-white transition-colors">
+            {tech.name}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
 </section>
-
-<script>
-    const cssRules = [];
-
-    for (let i = 1; i <= 20; i++) {
-        const cssRule = `.circle-arround-two-${i} {
-        cursor: pointer;
-        position: absolute;
-        width: 90px;
-        height: 90px;
-        border-radius: 50%;
-        top: 210px;
-        left: 210px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: white;
-      }`;
-
-        cssRules.push(cssRule);
-    }
-
-    const styleElement = document.createElement("style");
-    styleElement.innerHTML = cssRules.join("\n");
-    document.head.appendChild(styleElement);
-</script>

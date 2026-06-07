@@ -1,27 +1,49 @@
 ---
-import EarthCanvas from "./canvas/Earth.vue";
-import { styles } from "../assets/scripts/styles.js";
+import { github } from "../../public/assets/index.js";
 ---
 
-<section class="relative w-full h-screen mx-auto">
-    <div class="xl: flex xl:flex-row flex-col-reverse gap-10 overflow-hidden">
-        <div class={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-center gap-5`}>
-            <div class="flex flex-col justify-center items-center mt-5">
-                <div class="w-5 h-5 rounded-full bg-[#8d6eff]"></div>
-                <div class="w-1 sm:h-80 h-40 violet-full"></div>
-                <div class="w-5 h-5 rounded-full bg-[#8d6eff]"></div>
-            </div>
+<section class="relative w-full min-h-screen flex items-center" id="hero">
+  <div class="max-w-7xl mx-auto w-full px-6 sm:px-10 pt-28">
+    <div class="max-w-2xl reveal">
+      <p class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-sm text-secondary mb-6">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        Available for new projects
+      </p>
 
-            <div>
-                <h1 class={`text-white ${styles.heroHeadText}`}>
-                  Hi, I'm <span class="text-[#8d6eff]">Bergan</span>
-                </h1>
-                <p class={`mt-2 text-white-100 ${styles.heroSubText}`}>
-                  I'm a Software Developer creating<br class="sm:block hidden" />
-                  user interfaces and web applications
-                </p>
-            </div>
-            <EarthCanvas client:load />
-        </div>
+      <h1 class="font-display font-bold text-white leading-[1.05] text-[44px] xs:text-[56px] sm:text-[72px] lg:text-[84px]">
+        Hi, I'm <span class="text-gradient">Bergan</span>
+      </h1>
+
+      <p class="mt-6 text-secondary text-lg sm:text-xl leading-relaxed max-w-xl">
+        A Software Developer crafting fast, polished
+        <span class="text-white">user interfaces</span> and
+        <span class="text-white">web applications</span>.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="#work" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a
+          href="https://github.com/Bergan404"
+          target="_blank"
+          rel="noopener"
+          class="ml-1 w-11 h-11 rounded-full glass flex items-center justify-center hover:border-accent transition-colors"
+          aria-label="GitHub"
+        >
+          <img src={github.src} alt="GitHub" class="w-5 h-5 object-contain" />
+        </a>
+      </div>
     </div>
+  </div>
+
+  <a
+    href="#about"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-secondary hover:text-white transition-colors"
+    aria-label="Scroll down"
+  >
+    <span class="text-xs uppercase tracking-[0.2em]">Scroll</span>
+    <span class="w-[26px] h-[42px] rounded-full border border-white/20 flex justify-center p-1.5">
+      <span class="w-1 h-2 rounded-full bg-accent animate-bounce"></span>
+    </span>
+  </a>
 </section>

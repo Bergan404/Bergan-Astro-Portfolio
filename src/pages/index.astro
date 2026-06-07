@@ -1,95 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Home from "../components/Home.astro";
+import Scene from "../components/canvas/Scene.vue";
 import Navbar from "../components/Navbar.astro";
+import Home from "../components/Home.astro";
 import About from "../components/About.astro";
-import Tech from "../components/Tech.astro";
 import Works from "../components/Works.astro";
+import Tech from "../components/Tech.astro";
 import Contact from "../components/Contact.astro";
-import StarCanvas from "../components/canvas/StarCanvas.vue";
 ---
 
-<Layout title="Bergan Oudshoorn">
-	<div class="relative z-0 bg-primary">
-		<div class="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-			<Navbar />
-			<div class="relative z-0">
-				<Home />
-				<StarCanvas client:load/>
-			</div>
-		</div>
-		<About />
-		<Works />
-        <Tech />
-		<div class='relative z-0 bg-primary'>
-			<div class='bg-contact-pattern bg-cover bg-no-repeat bg-center'>
-				<div class='relative z-0'>
-				<Contact />
-				<StarCanvas client:load/>
-				</div>
-			</div>
-		</div>
+<Layout title="Bergan Oudshoorn — Software Developer">
+	<Scene client:only="vue" />
+
+	<div class="relative z-10">
+		<Navbar />
+		<main>
+			<Home />
+			<About />
+			<Works />
+			<Tech />
+			<Contact />
+		</main>
+		<footer class="relative z-10 text-center py-10 text-secondary text-sm">
+			<p>© {new Date().getFullYear()} Bergan Oudshoorn. Built with Astro + Three.js.</p>
+		</footer>
 	</div>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(
-			rgba(var(--accent-dark), 66%),
-			rgba(var(--accent-dark), 33%)
-		);
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>

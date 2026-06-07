@@ -1,11 +1,10 @@
 <script setup lang="ts">
-    import { useGLTF } from '@tresjs/cientos';
+import { useGLTF } from '@tresjs/cientos';
 
-    const { nodes } = await useGLTF('/models/stylized_planet.glb', { draco: true });
-
-    const model = nodes['Sketchfab_model'];
+// v5: useGLTF returns reactive `state` (auto-loads); render once it resolves.
+const { state } = useGLTF('/models/stylized_planet.glb', { draco: true });
 </script>
 
 <template>
-    <primitive :object="model" />
+  <primitive v-if="state" :object="(state as any).scene" />
 </template>

@@ -1,5 +1,5 @@
 ---
-import Image from 'astro/components/Image.astro';
+import Image from "astro/components/Image.astro";
 
 interface Props {
     title: string;
@@ -9,20 +9,9 @@ interface Props {
 const { title, image } = Astro.props;
 ---
 
-<div class="xs:w-[250px] w-full">
-    <div class="w-full violet-blue-gradient p-[1px] rounded-[20px] shadow-card">
-        <div
-            class="gradient-move rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-        >
-            <Image
-                src={image}
-                alt="web-development"
-                class="w-16 h-16 object-contain"
-            />
-
-            <h3 class="text-white text-[20px] font-bold text-center">
-                {title}
-            </h3>
-        </div>
+<div class="group glass rounded-2xl p-8 flex flex-col items-center justify-center text-center gap-5 min-h-[220px] transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/50">
+    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-accent/20 to-accent-2/10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+        <Image src={image} alt={title} class="w-10 h-10 object-contain" />
     </div>
+    <h3 class="text-white text-[19px] font-semibold">{title}</h3>
 </div>

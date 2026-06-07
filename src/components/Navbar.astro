@@ -1,76 +1,69 @@
 ---
 import { Image } from "astro:assets";
-import { styles } from "../assets/scripts/styles.js";
 import { navLinks } from "../constants/index.js";
 import { logo, menu } from "../../public/assets/index.js";
-
 ---
-<script>
-    // Ensure this script runs in the browser
-    if (typeof window !== 'undefined') {
-      console.log("Navbar component is hydrated");
 
-      const navBar = document.querySelector('nav');
-      window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        console.log("Scroll position: ", scrollTop);
+<nav class="fixed top-0 inset-x-0 z-30 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 mt-3 sm:mt-4">
+    <div class="nav-inner flex items-center justify-between rounded-2xl px-5 py-3 transition-all duration-300">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <Image src={logo} alt="logo" class="w-9 h-9 object-contain" />
+        <p class="text-white font-display font-bold text-[17px] tracking-tight">
+          Bergan
+          <span class="text-secondary font-normal hidden sm:inline">· Software Developer</span>
+        </p>
+      </a>
 
-        if (scrollTop > 100) {
-          navBar?.classList.add('scrolled');
-          navBar?.classList.add('bg-primary')
-        } else {
-          navBar?.classList.remove('scrolled');
-          navBar?.classList.remove('bg-primary');
-          navBar?.classList.add('bg-transparent');
-        }
-      });
-    }
-  </script>
+      <ul class="hidden sm:flex items-center gap-8">
+        {navLinks.map((nav) => (
+          <li>
+            <a
+              href={`#${nav.id}`}
+              class="text-secondary hover:text-white text-[15px] font-medium transition-colors relative after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-0 after:bg-accent after:transition-all hover:after:w-full"
+            >
+              {nav.title}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-<nav class={`${styles.paddingX} w-full flex items-center py-4 fixed top-0 z-20`}>
-  <div class="w-full flex justify-between items-center max-w-7xl mx-auto">
-    <a href="/" class="flex items-center gap-2">
-      <Image src={logo} alt="logo" class="w-9 h-9 object-contain" />
-      <p class="text-white text-[18px] font-bold cursor-pointer flex">
-        Bergan &nbsp;
-        <span class="sm:block hidden"> | Software Developer</span>
-      </p>
-    </a>
+      <a href="#contact" class="hidden sm:inline-flex btn btn-primary !py-2 !px-5 !text-sm">
+        Let's talk
+      </a>
 
-    <ul class="list-none hidden sm:flex flex-row gap-10">
-      {navLinks.map((nav) => (
-        <li class={`text-secondary hover:text-white text-[18px] font-medium cursor-pointer`}>
-          <a href={`#${nav.id}`}>{nav.title}</a>
+      <button class="sm:hidden flex items-center justify-center" id="menu-icon" aria-label="Open menu">
+        <Image src={menu} alt="menu" class="w-7 h-7 object-contain" />
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden sm:hidden glass rounded-2xl mt-2 p-5">
+      <ul class="flex flex-col gap-4">
+        {navLinks.map((nav) => (
+          <li>
+            <a href={`#${nav.id}`} class="text-secondary hover:text-white text-base font-medium">
+              {nav.title}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="#contact" class="text-accent font-semibold">Let's talk →</a>
         </li>
-      ))}
-    </ul>
-
-    <div class="sm:hidden flex flex-1 justify-end items-center">
-      <Image
-        src={menu}
-        alt="menu"
-        class="w-[28px] h-[28px] object-contain cursor-pointer"
-        id="menu-icon"
-      />
-
-      <div
-        id="mobile-menu"
-        class="hidden p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl"
-      >
-        <ul class="list-none flex justify-end items-start flex-1 flex-col gap-4">
-          {navLinks.map((nav) => (
-            <li class="font-poppins font-medium cursor-pointer text-[16px] text-secondary hover:text-white">
-              <a href={`#${nav.id}`}>{nav.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </ul>
     </div>
   </div>
 </nav>
 
 <style>
-  nav.scrolled {
-    background-color: var(--primary-color); /* Replace with your color variable */
+  .nav-inner {
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  nav.scrolled .nav-inner {
+    background: rgba(10, 9, 24, 0.6);
+    border-color: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
   }
 </style>
