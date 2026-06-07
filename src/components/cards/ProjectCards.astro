@@ -13,38 +13,34 @@ interface Props {
 const { title, image, link, description, tags } = Astro.props;
 ---
 
-<div class="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full">
-    <div class="relative w-full h-[230px]">
+<article class="group glass rounded-2xl p-5 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:border-accent/50">
+    <div class="relative w-full h-[210px] rounded-xl overflow-hidden">
         <Image
             src={image}
-            alt="project_image"
-            class="w-full h-full object-cover rounded-2xl"
+            alt={title}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-
-        <div class="absolute inset-0 flex justify-end m-3 card-img_hover">
-            <a
-                href={link}
-                class="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-            >
-                <Image
-                    src={github}
-                    alt="source code"
-                    class="w-1/2 h-1/2 object-contain"
-                />
-            </a>
-        </div>
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener"
+            class="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/70 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            aria-label={`${title} source code`}
+        >
+            <Image src={github} alt="source code" class="w-1/2 h-1/2 object-contain" />
+        </a>
     </div>
 
-    <div class="mt-5">
-        <h3 class="text-white font-bold text-[24px]">{title}</h3>
-        <p class="mt-2 text-secondary text-[14px]">{description}</p>
+    <div class="mt-5 flex-1">
+        <h3 class="text-white font-semibold text-[22px]">{title}</h3>
+        <p class="mt-2 text-secondary text-[14px] leading-[22px]">{description}</p>
     </div>
 
-    <div class="mt-4 flex flex-wrap gap-2">
-        {
-            tags.map((tag) => (
-                <Image src={tag.icon} alt={tag.name} class="w-7" />
-            ))
-        }
+    <div class="mt-5 flex flex-wrap gap-2">
+        {tags.map((tag) => (
+            <span class="text-[12px] text-secondary bg-white/5 border border-white/10 rounded-full px-3 py-1">
+                #{tag.name}
+            </span>
+        ))}
     </div>
-</div>
+</article>

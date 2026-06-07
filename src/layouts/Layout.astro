@@ -5,7 +5,6 @@ interface Props {
 
 const { title } = Astro.props;
 
-import "bootstrap/dist/css/bootstrap.css";
 import "../assets/styles/main.css";
 ---
 
@@ -13,48 +12,33 @@ import "../assets/styles/main.css";
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Bergan Oudshoorn's Portfolio" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
+		<meta name="description" content="Bergan Oudshoorn — Software Developer building interfaces and web applications." />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-			integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer">
-		</script>
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content="Software Developer building interfaces and web applications." />
+		<meta property="og:type" content="website" />
 		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
+		<script src="../assets/scripts/nav.js"></script>
+		<script>
+			// Reveal sections as they scroll into view.
+			const els = document.querySelectorAll<HTMLElement>(".reveal");
+			const io = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("is-visible");
+							io.unobserve(entry.target);
+						}
+					}
+				},
+				{ threshold: 0.15 }
+			);
+			els.forEach((el) => io.observe(el));
+		</script>
 	</body>
-	<script src="../assets/scripts/nav.js"></script>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>

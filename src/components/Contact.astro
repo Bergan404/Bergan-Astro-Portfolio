@@ -1,47 +1,86 @@
 ---
-import { styles } from "../assets/scripts/styles.js";
+import { github } from "../../public/assets/index.js";
+
+// Static site: the form composes a mailto. Update this to your address.
+const contactEmail = "hello@berganoudshoorn.net";
 ---
 
-<section class={`${styles.padding} max-w-7xl mx-auto relative z-0`} id="contact">
-    <div
-        class={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
-    >
-        <div class="flex-[0.75] bg-black-100 p-8 rounded-2xl h-fit">
-            <p class={styles.sectionSubText}>Get in touch</p>
-            <h3 class={styles.sectionHeadText}>Contact.</h3>
+<section class="relative py-24 sm:py-32" id="contact">
+  <span class="hash-span"></span>
+  <div class="max-w-5xl mx-auto px-6 sm:px-10">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div class="reveal">
+        <p class="text-accent uppercase tracking-[0.25em] text-sm font-medium">Get in touch</p>
+        <h2 class="font-display font-bold text-white text-[34px] sm:text-[52px] mt-2">Contact.</h2>
+        <p class="mt-5 text-secondary text-[17px] leading-[30px] max-w-md">
+          Have a project in mind or just want to say hi? Drop me a message and
+          I'll get back to you.
+        </p>
 
-            <form class="mt-12 flex flex-col gap-8">
-                <label class="flex flex-col">
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="What's your good name?"
-                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-                    />
-                </label>
-                <label class="flex flex-col">
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="What's your web address?"
-                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-                    />
-                </label>
-                <label class="flex flex-col">
-                    <textarea
-                        rows={7}
-                        name="message"
-                        placeholder="What you want to say?"
-                        class="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-                    ></textarea>
-                </label>
-
-                <button
-                    type="submit"
-                    class="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
-                >
-                </button>
-            </form>
+        <div class="mt-8 flex flex-col gap-3">
+          <a href={`mailto:${contactEmail}`} class="text-white hover:text-accent transition-colors">
+            {contactEmail}
+          </a>
+          <a
+            href="https://github.com/Bergan404"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors w-fit"
+          >
+            <img src={github.src} alt="GitHub" class="w-5 h-5 object-contain" />
+            github.com/Bergan404
+          </a>
         </div>
+      </div>
+
+      <form id="contact-form" class="glass rounded-2xl p-7 sm:p-8 flex flex-col gap-5 reveal" data-email={contactEmail}>
+        <label class="flex flex-col gap-2">
+          <span class="text-sm text-secondary">Your name</span>
+          <input
+            type="text"
+            name="name"
+            required
+            placeholder="Jane Doe"
+            class="bg-white/5 border border-white/10 focus:border-accent py-3.5 px-5 text-white rounded-xl outline-none transition-colors placeholder:text-secondary/60"
+          />
+        </label>
+        <label class="flex flex-col gap-2">
+          <span class="text-sm text-secondary">Your email</span>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="jane@example.com"
+            class="bg-white/5 border border-white/10 focus:border-accent py-3.5 px-5 text-white rounded-xl outline-none transition-colors placeholder:text-secondary/60"
+          />
+        </label>
+        <label class="flex flex-col gap-2">
+          <span class="text-sm text-secondary">Message</span>
+          <textarea
+            rows={6}
+            name="message"
+            required
+            placeholder="Tell me about your project…"
+            class="bg-white/5 border border-white/10 focus:border-accent py-3.5 px-5 text-white rounded-xl outline-none transition-colors resize-none placeholder:text-secondary/60"
+          ></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary justify-center w-full">Send message</button>
+      </form>
     </div>
+  </div>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const to = form.dataset.email ?? "";
+    const name = String(data.get("name") ?? "");
+    const email = String(data.get("email") ?? "");
+    const message = String(data.get("message") ?? "");
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+  });
+</script>
