@@ -12,18 +12,21 @@ import { services } from "../constants/index.js";
       <h2 class="font-display font-bold text-white text-[34px] sm:text-[52px] mt-2">Overview.</h2>
 
       <p class="mt-6 text-secondary text-[17px] leading-[32px] max-w-3xl">
+        Software development started as a hobby and became a career built around solving problems. Today I design and develop websites, applications, and digital experiences that balance performance, usability, and business goals. Whether it's a marketing site, custom CMS, or enterprise platform, I enjoy taking an idea from concept to launch and seeing it create real impact.
+      </p>
+      <!-- <p class="mt-6 text-secondary text-[17px] leading-[32px] max-w-3xl">
         I'm a software developer with experience across 20+ languages and
         deep expertise in modern frameworks like React and Node.js. I adapt and
         learn quickly, working closely with clients to ship efficient, scalable,
         and user-friendly solutions to real-world problems. I've independently
         built over 180 high-quality websites for top-tier clients — and I'm
         driven by building, learning, and shared success.
-      </p>
+      </p> -->
     </div>
 
     <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
       {services.map((service) => (
-        <ServiceCards title={service.title} image={service.icon} />
+        <ServiceCards title={service.title} description={service.description} image={service.icon} />
       ))}
     </div>
   </div>

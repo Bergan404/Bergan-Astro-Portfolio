@@ -3,6 +3,7 @@ import Image from "astro/components/Image.astro";
 
 interface Props {
     title: string;
+    description: string;
     image: ImageMetadata;
 }
 
@@ -14,4 +15,5 @@ const { title, image } = Astro.props;
         <Image src={image} alt={title} class="w-10 h-10 object-contain" />
     </div>
     <h3 class="text-white text-[19px] font-semibold">{title}</h3>
+    <p class="text-secondary text-sm leading-relaxed">{Astro.props.description}</p>
 </div>

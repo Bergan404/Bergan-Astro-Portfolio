@@ -40,7 +40,16 @@ import {
   pythonlogo,
   flasklogo,
   sqlalchemylogo,
+  bergan
 } from "../../public/assets/index.js";
+
+export const home = [
+  {
+    title: "Full Stack Developer",
+    name: "Bergan Oudshoorn",
+    image: bergan,
+  }
+]
 
 export const navLinks = [
   {
@@ -59,15 +68,21 @@ export const navLinks = [
 
 const services = [
   {
-    title: "Frontend Developer",
+    title: "Web Development",
+    description:
+      "Modern websites focused on performance, SEO, accessibility, and conversion.",
     icon: frontend,
   },
   {
-    title: "Full-Stack Developer",
+    title: "Custom Applications",
+    description:
+      "Internal tools, CMS platforms, dashboards, and business software tailored to your workflow.",
     icon: fullStack,
   },
   {
-    title: "Backend Developer",
+    title: "Automation & Integrations",
+    description:
+      "API development, data pipelines, third-party integrations, and process automation that save time and reduce manual work.",
     icon: backend,
   },
 ];

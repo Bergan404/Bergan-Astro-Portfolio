@@ -64,6 +64,13 @@ body::after {
   -webkit-text-fill-color: transparent;
 }
 
+.gradient-border {
+  border: 2px solid transparent;
+  box-shadow: 0 10px 30px -10px rgba(141, 110, 255, 0.7);
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+    linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%) border-box;
+}
+
 .hash-span {
   display: block;
   height: 0;

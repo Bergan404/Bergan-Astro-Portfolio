@@ -50,8 +50,11 @@ import pythonlogo from "./python.png";
 import flasklogo from "./flask.png";
 import sqlalchemylogo from "./sqla.png";
 
+import bergan from "./Bergan.png";
+
 export {
   logo,
+  bergan,
   bluePlanet,
   redPlanet,
   backend,
